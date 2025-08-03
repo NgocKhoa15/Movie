@@ -1,0 +1,21 @@
+.movie-card{
+    img{
+        width: 100%;
+        border-radius: 12px;
+        cursor: pointer;
+    }
+
+    h3{
+        font-size: 22px;
+        line-height: 24px;
+        font-weight: 500;
+        color: white;
+        margin: 8px 0;
+    }
+    p{
+        font-size: 14px;
+        opacity: 0.5;
+        color: white;
+    }
+    
+}

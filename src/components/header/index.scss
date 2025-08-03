@@ -1,0 +1,32 @@
+.header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 300px;
+    background-color: rgba(0, 0, 0, 0.25);
+    position: fixed;
+    left: 0;
+    right: 0;
+    z-index: 100 ;
+    // & <=> .header
+    
+    &__logo img{
+        width: 200px;
+    }
+
+    &__link a{
+       text-decoration: none;
+       margin-right: 20px ;
+       color: white;
+       font-size: 20px;
+       font-weight: 500;
+
+        &:hover {
+            color: red;
+            transition: 0.5s;
+        }
+    }
+
+    
+}
+
