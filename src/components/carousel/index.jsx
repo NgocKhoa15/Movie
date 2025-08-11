@@ -43,6 +43,7 @@ export default function Carousel({heading, url}) {
         {movies.map((movie) => (
           <SwiperSlide>
             <MovieCard
+              id={movie.id}
               name={movie.title ? movie.title : movie.name}
               description={
                 movie.release_date ? movie.release_date : movie.first_air_date

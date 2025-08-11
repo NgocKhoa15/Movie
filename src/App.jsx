@@ -3,36 +3,31 @@ import Home from './pages/home';
 import Header from './components/header';
 import HeroSection from './components/hero-section';
 import Carousel from './components/carousel';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import MovieDetail from './pages/movie-detail';
 
 function App() {
+  
+
+  const router = createBrowserRouter([
+    {
+      path: "",
+      element: <Home />,
+    },
+    {
+      path: "movie-detail/:movieId", // slug trong react routerdom
+      element: <MovieDetail />,
+    },
+    {
+      path: "abc",
+      element: <h1>ABC</h1>,
+    },
+  ]);
+
   return (
+    // single pass aplication: cơ chế load lại trang
     <div>
-      <Header />
-      <HeroSection />
-      <Carousel
-        heading={"Trending"}
-        url="https://api.themoviedb.org/3/trending/all/week?api_key=a10ee5569194b352bcca20840b7f8a32&language=en-US"
-      />
-      <Carousel
-        heading={"Comedy Movies"}
-        url="https://api.themoviedb.org/3/discover/movie?api_key=a10ee5569194b352bcca20840b7f8a32&with_genres=35"
-      />
-      <Carousel
-        heading={"Top Rated"}
-        url="https://api.themoviedb.org/3/movie/top_rated?api_key=a10ee5569194b352bcca20840b7f8a32&language=en-US"
-      />
-      <Carousel
-        heading={"Action Movies"}
-        url="https://api.themoviedb.org/3/discover/movie?api_key=a10ee5569194b352bcca20840b7f8a32&with_genres=28"
-      />
-      <Carousel
-        heading={"Horror movies"}
-        url="https://api.themoviedb.org/3/discover/movie?api_key=a10ee5569194b352bcca20840b7f8a32&with_genres=27"
-      />
-      <Carousel
-        heading={"Romance movies"}
-        url="https://api.themoviedb.org/3/discover/movie?api_key=a10ee5569194b352bcca20840b7f8a32&with_genres=10749"
-      />
+      <RouterProvider router={router} />
     </div>
   );
 }

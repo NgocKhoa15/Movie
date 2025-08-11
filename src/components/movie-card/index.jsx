@@ -1,12 +1,15 @@
 import React from 'react'
 import "./index.scss"
-function MovieCard({img, name, description}) {
+import { Link } from 'react-router-dom';
+
+function MovieCard({id, img, name, description}) {
   return (
-    <div className="movie-card">
+    <Link to={`/movie-detail/${id}`} className="movie-card">
       <img src={`https://image.tmdb.org/t/p/original${img}`} alt="" />
       <h3>{name}</h3>
       <p>{description.split("-").reverse().join("/")}</p>
-    </div>
+
+    </Link>
   );
 }
 
