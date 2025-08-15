@@ -1,8 +1,8 @@
 import React from 'react'
 
-function Tag() {
+function Tag({children}) {
   return (
-    <div>Tag</div>
+    <div className='tag'>{children}</div>
   )
 }
 
