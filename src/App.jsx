@@ -5,6 +5,7 @@ import HeroSection from './components/hero-section';
 import Carousel from './components/carousel';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import MovieDetail from './pages/movie-detail';
+import "react-circular-progressbar/dist/styles.css";
 
 function App() {
   
