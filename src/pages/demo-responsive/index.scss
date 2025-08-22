@@ -1,0 +1,18 @@
+@import "/src/styles/mixin/mixin/layout.scss";
+
+.demo {
+    background-color: rgb(255, 0, 0);
+    
+    @include sp{
+        background-color: blue;
+    }
+
+    @include tablet{
+        background-color: yellow;
+    }
+
+    
+
+}
+
+

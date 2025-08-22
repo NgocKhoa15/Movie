@@ -1,3 +1,5 @@
+@import "/src/styles/mixin/mixin/layout.scss";
+
 .movie-detail {
   .banner {
     .bg-blur {
@@ -18,11 +20,24 @@
       gap: 50px;
       z-index: 10;
 
+      @include tablet{
+        padding: 100px 40px;
+      }
+
+      @include sp{
+        padding: 100px 30px;
+        display: block; 
+      }
+
       .left {
         width: 350px;
         position: static;
         z-index: 1000;
         flex-shrink: 0;
+
+        @include sp{
+          width: 100%;
+        }
 
         img {
           width: 100%;
@@ -39,6 +54,8 @@
         h1 {
           font-size: 40px;
           font-weight: 400;
+
+          @include bottom-line;
         }
 
         .tagLine {

@@ -6,6 +6,7 @@ import Carousel from './components/carousel';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import MovieDetail from './pages/movie-detail';
 import "react-circular-progressbar/dist/styles.css";
+import Demo from './pages/demo-responsive';
 
 function App() {
   
@@ -20,8 +21,8 @@ function App() {
       element: <MovieDetail />,
     },
     {
-      path: "abc",
-      element: <h1>ABC</h1>,
+      path: "demo",
+      element: <Demo />,
     },
   ]);
 
