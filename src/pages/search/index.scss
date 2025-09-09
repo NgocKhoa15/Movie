@@ -1,0 +1,28 @@
+@import '/src/styles/mixin/mixin/layout.scss';
+
+.search {
+    color: white;
+
+   h2{
+    font-weight: 500;
+   }
+
+   .movie-list{
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+
+    .movie-card{
+        width: calc(100%/5 - 16px);
+        
+        @include tablet {
+            width: calc(100%/4 - 15px);
+        }
+
+        @include sp{
+            width: calc(100%/2 - 10px);
+        }
+    }
+   }
+
+}
