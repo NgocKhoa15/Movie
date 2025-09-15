@@ -4,23 +4,26 @@ import "./index.scss";
 import axios from "axios";
 import Tag from "../../components/tag";
 import { buildStyles, CircularProgressbar } from "react-circular-progressbar";
+import CastCard from "../../components/cast-card";
+import VideoCard from "../../components/video-card";
 
 function MovieDetail() {
   // lấy slug ở trên url
   const { movieId } = useParams();
   const [movie, setMovie] = useState({});
   const [credits, setCredits] = useState({});
+  const [videos, setVideos] =useState({});
   console.log(movieId);
 
   // thông qua API lấy movie detail
   // chạy nó chạy khi vừa load page
 
   const fetchMovieDetail = async () => {
-    const respone = await axios.get(
+    const response = await axios.get(
       `https://api.themoviedb.org/3/movie/${movieId}?api_key=a10ee5569194b352bcca20840b7f8a32`
     );
-    setMovie(respone.data);
-    console.log(respone.data);
+    setMovie(response.data);
+    console.log(response.data);
   };
 
   const fetchCredits = async () => {
@@ -33,9 +36,18 @@ function MovieDetail() {
     );
   };
 
+  const fetchVideos = async () => {
+    const response = await axios.get(
+      `https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=a10ee5569194b352bcca20840b7f8a32`
+    );
+    setVideos(response.data);
+    console.log(response.data);
+  };
+
   useEffect(() => {
     fetchMovieDetail();
     fetchCredits();
+    fetchVideos();
   }, []);
 
   return (
@@ -111,18 +123,46 @@ function MovieDetail() {
               <div className="info">
                 <span className="label">Director: </span>
                 <span className="value">
-                  {
-                    credits.crew?.filter((item) => item.job === "Writer")[0]
-                      .name
-                  }
+                  {credits.crew
+                    ?.filter(
+                      (item) =>
+                        item.department === "Writing" &&
+                        (item.job === "Screenplay" ||
+                          item.job === "Writer" ||
+                          item.job === "Story")
+                    )
+                    .map((i) => i.name)
+                    .join(", ")}
                 </span>
               </div>
             </div>
-
-
           </div>
         </div>
         <div className="overlay"></div>
+      </div>
+      <div className="castCard-section">
+        <h1 className="castCard-title">Top Cast</h1>
+        <div className="castCard-wrapper" style={{ display: "flex", gap: 10 }}>
+          {credits.cast?.slice(0, 5)?.map((item) => (
+            <CastCard
+              image={item.profile_path}
+              name={item.name}
+              subName={item.character}
+            />
+          ))}
+        </div>
+      </div>
+
+      <div className="video-section">
+          <h3 className="video-title">Offical Videos</h3>
+          <div className="video-wrapper">
+            {videos.results?.slice(0, 5)?.map((item) =>
+            <VideoCard 
+            key={item.key}
+            name={item.name}
+
+            />)}
+          </div>
       </div>
     </div>
   );
