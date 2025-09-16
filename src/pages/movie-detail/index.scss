@@ -1,24 +1,29 @@
 @import "/src/styles/mixin/mixin/layout.scss";
 
 .movie-detail {
+  position: relative;
   .banner {
+    position: relative;
+
     .bg-blur {
       width: 100%;
       height: 100vh;
       object-fit: cover;
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 0;
     }
 
     .content {
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      background: rgba(4, 21, 45, 0.85);
+      position: relative;
+      inset: 0;
+      background: rgba(4, 21, 45, 0.8);
       display: flex;
       padding: 100px 200px;
       gap: 50px;
-      z-index: 10;
+      z-index: 2;
 
       @include tablet{
         padding: 100px 40px;
@@ -89,7 +94,7 @@
         }
 
         p {
-          line-height: 35px;
+          line-height: 30px;
         }
 
         .box {
@@ -108,49 +113,51 @@
         }
       }
     }
-
     .overlay {
       background: linear-gradient(
         180deg,
         rgba(4, 21, 45, 0) 0%,
         #04152d 79.17%
       );
-      height: 300px;
+      height: 100%;
       position: absolute;
       left: 0;
       right: 0;
-      bottom: 0;
+      bottom: 0px;
+      z-index: 1;
     }
   }
 }
-.castCard-title{
-  text-align: center;
-  font-weight: 1000;
-  font-size: 45px;
-  color: #fff;
-  margin-bottom: 30px;
+.castCard-section{
+    &__title{
+      text-align: center;
+      font-weight: 1000;
+      font-size: 45px;
+      color: #fff;
+      margin-bottom: 30px;
 
 }
-.castCard-wrapper{
-  max-width: 1200px;
-  margin: 20px auto;
-  justify-content: center;
+    &__wrapper{
+      max-width: 1200px;
+      margin: 20px auto;
+      justify-content: center;
+}
 }
 
 .video-section{
-  width: 1200px;
+ max-width: 1200px;
   margin: 20px auto;
 
-  .video-title{
-  text-align: center;
-  font-weight: 1000;
-  font-size: 45px;
-  color: #fff;
-  margin-bottom: 30px;
+    &__title{
+      text-align: center;
+      font-weight: 1000;
+      font-size: 45px;
+      color: #fff;
+      margin-bottom: 30px;
   }
-  .video-wrapper{
-    display: flex;
-    gap: 20px;
-    justify-content: center;
+    &__wrapper{
+      display: flex;
+      gap: 20px;
+      justify-content: center;
   }
 }

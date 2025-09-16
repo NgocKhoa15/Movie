@@ -121,7 +121,7 @@ function MovieDetail() {
 
             <div className="box">
               <div className="info">
-                <span className="label">Director: </span>
+                <span className="label">Writer: </span>
                 <span className="value">
                   {credits.crew
                     ?.filter(
@@ -141,9 +141,12 @@ function MovieDetail() {
         <div className="overlay"></div>
       </div>
       <div className="castCard-section">
-        <h1 className="castCard-title">Top Cast</h1>
-        <div className="castCard-wrapper" style={{ display: "flex", gap: 10 }}>
-          {credits.cast?.slice(0, 5)?.map((item) => (
+        <h1 className="castCard-section__title">Top Cast</h1>
+        <div
+          className="castCard-section__wrapper"
+          style={{ display: "flex", gap: 10 }}
+        >
+          {credits.cast?.slice(0, 6)?.map((item) => (
             <CastCard
               image={item.profile_path}
               name={item.name}
@@ -154,15 +157,16 @@ function MovieDetail() {
       </div>
 
       <div className="video-section">
-          <h3 className="video-title">Offical Videos</h3>
-          <div className="video-wrapper">
-            {videos.results?.slice(0, 5)?.map((item) =>
-            <VideoCard 
-            key={item.key}
-            name={item.name}
-
-            />)}
-          </div>
+        <h3 className="video-section__title">Offical Videos</h3>
+        <div className="video-section__wrapper">
+          {videos.results?.slice(0, 5)?.map((item) => (
+            <VideoCard
+              img={`https://img.youtube.com/vi/${item.key}/mqdefault.jpg`}
+              name={item.name}
+              url={`https://www.youtube.com/watch?v=${item.key}`}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );

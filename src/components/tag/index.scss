@@ -1,9 +1,13 @@
+@import "/src/styles/mixin/mixin/layout.scss";
+
 .tag{
     background-color:  #da2f68;
     color: #fff;
-    display: inline;
+    display: inline-block; 
     padding: 4px 8px;
     font-size: 17px;
     border-radius: 5px;
     margin-right: 10px;
+    margin-bottom: 8px;
+    vertical-align: top;
 }
